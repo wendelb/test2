@@ -12,9 +12,7 @@
     <button id="asdf">Click Me!</button>
 
     <script>
-      setTimeout(() => {
-        window.parent.postMessage(["setHeight", 200], "*");
-      }, 1000);
+      window.parent.postMessage(["setHeight", 200], "*");
 
       const button = document.getElementById('asdf')
       button.addEventListener('click', () => {
