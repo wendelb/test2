@@ -1,7 +1,19 @@
 <!DOCTYPE html>
 <html>
-  <head>My Iframe</head>
+  <head><title>My Iframe</title></head>
   <body>
-    <h1>I am an Iframe</h1>
+    <button id="asdf">Click Me!</button>
+
+    <script>
+      setTimeout(() => {
+        window.parent.postMessage(["setHeight", 200], "*");
+      }, 1000);
+
+      const button = document.getElementById('asdf')
+      button.addEventListener('click', () => {
+        button.innerHTML = 'I have been clicked'
+        alert('You clicked me');
+      });
+    </script>
   </body>
 </html>
