@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal Container Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        body {
+            background-color: #00d4ff;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            position: fixed;
+        }
+
+        .background-content {
+            width: 200vw;
+            height: 200vh;
+            padding: 50px;
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 48px;
+            line-height: 1.6;
+        }
+
+        .modal {
+            position: fixed;
+            top: 100px;
+            bottom: 100px;
+            left: 15px;
+            right: 15px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .modal-header {
+            padding: 24px 32px;
+            border-bottom: 1px solid #e5e7eb;
+            background-color: #f9fafb;
+            flex-shrink: 0;
+        }
+
+        .modal-header h1 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #111827;
+        }
+
+        .modal-body {
+            padding: 32px;
+            overflow-y: auto;
+            flex: 1;
+        }
+
+        .modal-body p {
+            margin-bottom: 16px;
+            line-height: 1.6;
+            color: #374151;
+            font-size: 16px;
+        }
+
+        .modal-body h2 {
+            margin-top: 32px;
+            margin-bottom: 16px;
+            font-size: 20px;
+            font-weight: 600;
+            color: #1f2937;
+        }
+
+        .modal-body h2:first-child {
+            margin-top: 0;
+        }
+
+        .modal-footer {
+            padding: 20px 32px;
+            border-top: 1px solid #e5e7eb;
+            background-color: #f9fafb;
+            text-align: right;
+            flex-shrink: 0;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 24px;
+            background-color: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .button:hover {
+            background-color: #2563eb;
+        }
+
+        .button-secondary {
+            background-color: #6b7280;
+            margin-right: 12px;
+        }
+
+        .button-secondary:hover {
+            background-color: #4b5563;
+        }
+
+        /* Custom scrollbar styling */
+        .modal-body::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .modal-body::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        .modal-body::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+
+        .modal-body::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body>
+    <div class="background-content">
+        This is background content that extends beyond the viewport. The page is larger than the viewport but scrolling is disabled. You should not be able to scroll this background content.<br><br>
+        
+        Background Content Line 1 - Lorem ipsum dolor sit amet, consectetur adipiscing elit<br>
+        Background Content Line 2 - Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua<br>
+        Background Content Line 3 - Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris<br>
+        Background Content Line 4 - Duis aute irure dolor in reprehenderit in voluptate velit<br>
+        Background Content Line 5 - Excepteur sint occaecat cupidatat non proident<br><br>
+        
+        Background Content Line 6 - Sunt in culpa qui officia deserunt mollit anim id est laborum<br>
+        Background Content Line 7 - Sed ut perspiciatis unde omnis iste natus error sit voluptatem<br>
+        Background Content Line 8 - Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit<br>
+        Background Content Line 9 - Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet<br>
+        Background Content Line 10 - At vero eos et accusamus et iusto odio dignissimos ducimus<br><br>
+        
+        Background Content Line 11 - Temporibus autem quibusdam et aut officiis debitis<br>
+        Background Content Line 12 - Et harum quidem rerum facilis est et expedita distinctio<br>
+        Background Content Line 13 - Nam libero tempore, cum soluta nobis est eligendi optio<br>
+        Background Content Line 14 - Omnis voluptas assumenda est, omnis dolor repellendus<br>
+        Background Content Line 15 - Itaque earum rerum hic tenetur a sapiente delectus<br><br>
+        
+        Background Content Line 16 - More background content that extends vertically<br>
+        Background Content Line 17 - This ensures the background is taller than viewport<br>
+        Background Content Line 18 - Even though scrolling is disabled on the body<br>
+        Background Content Line 19 - The content itself is larger than what can be displayed<br>
+        Background Content Line 20 - This creates the overflow effect we want to demonstrate<br>
+    </div>
+
+    <div class="modal">
+        <div class="modal-header">
+            <h1>Scrollable Modal Dialog</h1>
+        </div>
+        <div class="modal-body">
+            <h2>Introduction</h2>
+            <p>
+                This is a floating modal window positioned on top of a bright background. The modal has 15px spacing
+                from the left and right sides of the viewport, and 100px spacing from the top and bottom.
+            </p>
+            <p>
+                The background page is larger than the viewport, but scrolling is disabled on the body element.
+                This creates the effect of a fixed, non-scrollable background with a scrollable modal overlay.
+            </p>
+
+            <h2>Lorem Ipsum Content</h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore
+                et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                aliquip ex ea commodo consequat.
+            </p>
+            <p>
+                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+                laborum.
+            </p>
+
+            <h2>More Content Sections</h2>
+            <p>
+                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
+                totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae
+                dicta sunt explicabo.
+            </p>
+            <p>
+                Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur
+                magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem
+                ipsum quia dolor sit amet, consectetur, adipisci velit.
+            </p>
+
+            <h2>Additional Paragraphs</h2>
+            <p>
+                At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum
+                deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non
+                provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.
+            </p>
+            <p>
+                Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est
+                eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas
+                assumenda est, omnis dolor repellendus.
+            </p>
+
+            <h2>Technical Implementation</h2>
+            <p>
+                This modal is implemented using CSS fixed positioning with calculated spacing. The modal uses
+                <code>top: 100px</code>, <code>bottom: 100px</code>, <code>left: 15px</code>, and <code>right: 15px</code>
+                to achieve the required spacing from the viewport edges.
+            </p>
+            <p>
+                The modal body section uses <code>overflow-y: auto</code> to enable vertical scrolling when the content
+                exceeds the available space. The header and footer sections remain fixed at the top and bottom of the
+                modal using flexbox layout.
+            </p>
+
+            <h2>Scrolling Behavior</h2>
+            <p>
+                The main page body has <code>overflow: hidden</code> applied to prevent scrolling of the background
+                content. This ensures that users can only scroll within the modal itself, creating a focused
+                reading experience.
+            </p>
+            <p>
+                The scrollbar within the modal is styled with custom colors to provide a polished appearance that
+                matches the overall design. On webkit-based browsers, you'll see a custom styled scrollbar.
+            </p>
+
+            <h2>More Content to Enable Scrolling</h2>
+            <p>
+                Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et
+                voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente
+                delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus
+                asperiores repellat.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                aliquip ex ea commodo consequat.
+            </p>
+            <p>
+                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+                laborum.
+            </p>
+
+            <h2>Even More Content</h2>
+            <p>
+                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
+                totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae
+                dicta sunt explicabo.
+            </p>
+            <p>
+                Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur
+                magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem
+                ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora
+                incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
+            </p>
+
+            <h2>Final Section</h2>
+            <p>
+                This is the final section of content to ensure the modal has enough text to require scrolling.
+                The modal should now extend well beyond its container height, demonstrating the scrolling functionality.
+            </p>
+            <p>
+                Thank you for scrolling through this demonstration of a properly implemented modal dialog with
+                constrained positioning and internal scrolling capabilities.
+            </p>
+        </div>
+        <div class="modal-footer">
+            <button class="button button-secondary">Cancel</button>
+            <button class="button">Accept</button>
+        </div>
+    </div>
+</body>
+</html>
